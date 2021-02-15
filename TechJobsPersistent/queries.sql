@@ -1,6 +1,6 @@
 --Part 1
-EmployerId INT
-Id INT
+EmployerId INT,
+Id INT,
 Name LONGTEXT
 --Part 2
 
