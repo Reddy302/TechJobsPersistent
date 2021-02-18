@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using TechJobsPersistent.Models;
 
 namespace TechJobsPersistent.ViewModels
 {
@@ -12,7 +14,26 @@ namespace TechJobsPersistent.ViewModels
 
         public int EmployerId { get; set; }
 
+        public int SkillId { get; set; }
+
         public List<SelectListItem> Employers { get; set; }
+        public List<Skill> Skills { get; set; }
+
+        public AddJobViewModel(List<Employer> employers, List<Skill> skills)
+        {
+            Employers = new List<SelectListItem>();
+            Skills = skills;
+
+            foreach (var employer in employers)
+            {
+                Employers.Add(
+                    new SelectListItem
+                    {
+                        Value = employer.Id.ToString(),
+                        Text = employer.Name
+                    });
+            }
+        }
 
         public AddJobViewModel()
         {
